@@ -7,8 +7,8 @@ CFLAGS := -std=c++17
 SRC := $(wildcard ./src/*.cpp)
 # Change the prefix from 'src' to 'bin'
 BIN := $(subst ./src/,./bin/,$(SRC))
-# Change the extension from 'cpp' to 'out'
-BIN := $(patsubst %.cpp,%.out,$(BIN))
+# remove the extension
+BIN := $(patsubst %.cpp,%,$(BIN))
 
 all: $(BIN)
 
