@@ -11,33 +11,18 @@
 #include <string>
 #include <vector>  // Useful array list
 
+#include "range.hpp"
 #include "utils.hpp"
 
 namespace fs = std::filesystem;
 
-/**
- * @brief read from stream line by line, and reverse the lines, output to
- * out_iter
- *
- * @tparam OutIter type for output iterator
- * @param is input stream
- * @param out_iter output iterator
- */
-template <typename OutIter>
-inline void reverse_from_stream(std::istream& is, OutIter out_iter) {
-    std::string line;
-    std::list<std::string> res;
-    while (std::getline(is, line)) {
-        res.push_front(std::move(line));
-    }
-    copy(res.begin(), res.end(), out_iter);
-}
-
-auto normal_out_iter = std::ostream_iterator<std::string>(std::cout, "\n");
-
 int main(int argc, char** argv) {
     // if no file (via parameter) inputed, deal with stdin
-    if (argc < 2) reverse_from_stream(std::cin, normal_out_iter);
+    if (argc < 2) {
+        auto lines = readlines();
+        R::reverse(lines);
+        std::cout << lines;
+    }
 
     // verify if file exist
     std::vector<fs::path> files;
@@ -59,6 +44,8 @@ int main(int argc, char** argv) {
 
     // reverse files
     for (auto& i : ifss) {
-        reverse_from_stream(i, normal_out_iter);
+        auto lines = readlines(i);
+        R::reverse(lines);
+        std::cout << lines;
     }
 }

@@ -1,9 +1,9 @@
 /* I/O library */
-#include <iostream>
 #include <fstream>
-#include <sstream>
+#include <iomanip>  // format manipulation
 #include <ios>
-#include <iomanip> // format manipulation
+#include <iostream>
+#include <sstream>
 /* Algorithms and numerics related */
 #include <algorithm>
 #include <numeric>
@@ -12,25 +12,25 @@
 #include <initializer_list>
 #include <type_traits>
 /* General utilities library */
-#include <memory>  // Supply std::shared/weak/unique ptr
-#include <chrono>
 #include <charconv>
+#include <chrono>
+#include <memory>  // Supply std::shared/weak/unique ptr
 #include <tuple>
-#include <utility> // Supply std::pair
+#include <utility>  // Supply std::pair
 /* Containers and iterators library */
-#include <vector> // Useful array list
-#include <queue>  // Supply std::priority_queue and std::deque
-#include <map>    
 #include <array>  // STL style array
 #include <iterator>
-/* Concurrency related */ 
-#include <thread>
-#include <mutex>
-#include <condition_variable>
+#include <map>
+#include <queue>   // Supply std::priority_queue and std::deque
+#include <vector>  // Useful array list
+/* Concurrency related */
 #include <atomic>
+#include <condition_variable>
+#include <mutex>
+#include <thread>
 /* Misc */
-#include <string>
 #include <regex>
+#include <string>
 /* File System Support */
 #include <filesystem>
 namespace fs = std::filesystem;
@@ -38,7 +38,6 @@ namespace fs = std::filesystem;
 #include "utils.hpp"
 
 int main(int argc, char **argv) {
-    auto name = input("What's you name:");
-    std::cout << "Hello " << name << '\n';
+    Lines a = {"Hello", "World"};
+    std::cout << '[' << a << ']' << '\n';
 }
-

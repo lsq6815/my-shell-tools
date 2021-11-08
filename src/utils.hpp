@@ -4,17 +4,46 @@
  * Define the commonly used utilities
  */
 
+#include <algorithm>
 #include <cstdlib>
 #include <iostream>
+#include <iterator>
 #include <string>
+#include <vector>
+
+#include "range.hpp"
+
+using std::begin;
+using std::cerr;
+using std::cin;
+using std::cout;
+using std::end;
+using std::next;
+using std::prev;
+
+using Line = std::string;
+using Lines = std::vector<Line>;
+
+/**
+ * @brief I/O for Lines
+ *
+ */
+std::ostream &operator<<(std::ostream &os, const Lines &lines) {
+    for (auto it = cbegin(lines); it != prev(cend(lines)); it++) {
+        cout << *it << '\n';
+    }
+    // no tailing \n
+    cout << *prev(cend(lines));
+    return os;
+}
 
 /**
  * @brief print error message and exit program
  *
  * @param msg error message to be print
  */
-inline void error(std::string msg) {
-    std::cerr << msg << '\n';
+inline void error(Line msg) {
+    cerr << msg << '\n';
     exit(EXIT_FAILURE);
 }
 
@@ -22,13 +51,42 @@ inline void error(std::string msg) {
  * @brief readline from input stream
  *
  * @param is input stream, by default is std::cin
- * @param delim delimiter, by default is  '\n'
+ * @param delim delimiter, by default is '\n'
  */
-inline std::string readline(std::istream &is = std::cin, char delim = '\n') {
-    std::string line;
-    if (std::getline(is, line))
-        return line;
+inline Line readline(std::istream &is = cin, char delim = '\n') {
+    Line line;
+    if (std::getline(is, line, delim)) return line;
     return "";
+}
+
+/**
+ * @brief read lines from inpute stream
+ *
+ * @param is input stream, by default is std::cin
+ * @param delim delimiter, by default is '\n'
+ */
+Lines readlines(std::istream &is = cin, char delim = '\n') {
+    Lines lines;
+    Line line;
+    while (std::getline(is, line, delim)) {
+        lines.push_back(std::move(line));
+    }
+    return lines;
+}
+
+/**
+ * @brief output the input via iterator
+ *
+ * @tparam OutIter output iterator type
+ * @param out_iter output iterator
+ * @param is input stream, by default is std::cin
+ * @param delim delimiter, by default is '\n'
+ */
+template <typename OutIter>
+inline void from_input_stream(OutIter out_iter, std::istream &is = cin,
+                              char delim = '\n') {
+    auto lines = readlines(is, delim);
+    R::copy(lines, out_iter);
 }
 
 /**
@@ -36,8 +94,8 @@ inline std::string readline(std::istream &is = std::cin, char delim = '\n') {
  *
  * @param msg hint message
  */
-inline std::string input(std::string msg) {
-    std::cout << msg << ' ';
+inline Line input(Line msg) {
+    cout << msg << ' ';
     return readline();
 }
 

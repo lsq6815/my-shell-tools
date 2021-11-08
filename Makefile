@@ -11,7 +11,11 @@ all: $(BIN)
 bin/%: src/%.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $<
 
+fmt:
+	@find src/ -type f -exec clang-format -i {} \;
+	@echo "Formation finished"
+
 clean:
 	$(RM) bin/*
 
-.PHONY: all clean
+.PHONY: all clean fmt
