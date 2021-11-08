@@ -4,6 +4,9 @@
 #include <algorithm>
 #include <numeric>
 
+/**
+ * @namespace for range-based STL algorithm
+ */
 namespace R {
 using namespace std;
 

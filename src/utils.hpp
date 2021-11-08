@@ -21,8 +21,8 @@ using std::end;
 using std::next;
 using std::prev;
 
-using Line = std::string;
-using Lines = std::vector<Line>;
+using Line = std::string; ///< a line of input
+using Lines = std::vector<Line>; ///< a group of input
 
 /**
  * @brief I/O for Lines
@@ -51,7 +51,7 @@ inline void error(Line msg) {
  * @brief readline from input stream
  *
  * @param is input stream, by default is std::cin
- * @param delim delimiter, by default is '\n'
+ * @param delim delimiter, by default is newline
  */
 inline Line readline(std::istream &is = cin, char delim = '\n') {
     Line line;
@@ -63,7 +63,7 @@ inline Line readline(std::istream &is = cin, char delim = '\n') {
  * @brief read lines from inpute stream
  *
  * @param is input stream, by default is std::cin
- * @param delim delimiter, by default is '\n'
+ * @param delim delimiter, by default is newline
  */
 Lines readlines(std::istream &is = cin, char delim = '\n') {
     Lines lines;
@@ -80,7 +80,7 @@ Lines readlines(std::istream &is = cin, char delim = '\n') {
  * @tparam OutIter output iterator type
  * @param out_iter output iterator
  * @param is input stream, by default is std::cin
- * @param delim delimiter, by default is '\n'
+ * @param delim delimiter, by default is newline
  */
 template <typename OutIter>
 inline void from_input_stream(OutIter out_iter, std::istream &is = cin,
