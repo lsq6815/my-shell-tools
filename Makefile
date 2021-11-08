@@ -1,20 +1,17 @@
-# Every C++ program should be single-file.
-CC := g++
-# Yes we need c++17
-CFLAGS := -std=c++17
+# Use the C++17 standard
+CXXFLAGS += -std=c++17
 
-# Keep all *.cpp file in 'src' directory
-SRC := $(wildcard ./src/*.cpp)
-# Change the prefix from 'src' to 'bin'
-BIN := $(subst ./src/,./bin/,$(SRC))
-# remove the extension
-BIN := $(patsubst %.cpp,%,$(BIN))
+# Match all cpp file under src/
+SRC = $(wildcard src/*.cpp)
+BIN = $(patsubst src/%.cpp,bin/%,$(SRC))
 
 all: $(BIN)
+	@echo "Compilation finished"
 
-# Pattern match
-$(BIN): $(SRC)
-	$(CC) $(CFLAGS) $< -o $@
+bin/%: src/%.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $<
 
-clear:
+clean:
 	$(RM) bin/*
+
+.PHONY: all clean

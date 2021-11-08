@@ -11,17 +11,9 @@
 #include <string>
 #include <vector>  // Useful array list
 
-namespace fs = std::filesystem;
+#include "utils.hpp"
 
-/**
- * @brief print error message and exit program
- *
- * @param msg error message to be print
- */
-inline void error(std::string msg) {
-    std::cerr << msg << '\n';
-    exit(EXIT_FAILURE);
-}
+namespace fs = std::filesystem;
 
 /**
  * @brief read from stream line by line, and reverse the lines, output to
