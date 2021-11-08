@@ -5,7 +5,7 @@
 #include <numeric>
 
 /**
- * @namespace for range-based STL algorithm
+ * for range-based STL algorithm
  */
 namespace R {
 using namespace std;
