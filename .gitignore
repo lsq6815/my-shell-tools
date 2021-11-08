@@ -1,5 +1,6 @@
 # No binary file
 bin/
+docs/
 
 # Prerequisites
 *.d

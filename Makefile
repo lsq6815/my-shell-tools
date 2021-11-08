@@ -15,7 +15,10 @@ fmt:
 	@find src/ -type f -exec clang-format -i {} \;
 	@echo "Formation finished"
 
+docs:
+	doxygen .doxyfile
+
 clean:
 	$(RM) bin/*
 
-.PHONY: all clean fmt
+.PHONY: all clean fmt docs
