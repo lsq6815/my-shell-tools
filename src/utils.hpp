@@ -21,8 +21,8 @@ using std::end;
 using std::next;
 using std::prev;
 
-using Line = std::string; ///< a line of input
-using Lines = std::vector<Line>; ///< a group of input
+using Line = std::string;         ///< a line of input
+using Lines = std::vector<Line>;  ///< a group of input
 
 /**
  * @brief I/O for Lines
@@ -97,6 +97,19 @@ inline void from_input_stream(OutIter out_iter, std::istream &is = cin,
 inline Line input(Line msg) {
     cout << msg << ' ';
     return readline();
+}
+
+/**
+ * @brief print the content of lines, without tailing delimiter
+ *
+ * @param lines lines of content
+ * @param delim delimiter
+ */
+inline void print(Lines lines, Line delim="\n") {
+    Lines::iterator it;
+    for (it = begin(lines); it != prev(end(lines)); it++) 
+        cout << *it << delim;
+    cout << *it;
 }
 
 #endif
