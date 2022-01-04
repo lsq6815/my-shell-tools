@@ -105,10 +105,9 @@ inline Line input(Line msg) {
  * @param lines lines of content
  * @param delim delimiter
  */
-inline void print(Lines lines, Line delim="\n") {
+inline void print(Lines lines, Line delim = "\n") {
     Lines::iterator it;
-    for (it = begin(lines); it != prev(end(lines)); it++) 
-        cout << *it << delim;
+    for (it = begin(lines); it != prev(end(lines)); it++) cout << *it << delim;
     cout << *it;
 }
 

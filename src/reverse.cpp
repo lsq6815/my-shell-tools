@@ -1,15 +1,5 @@
-#include <algorithm>
-#include <chrono>
 #include <filesystem>
 #include <fstream>
-#include <functional>
-#include <iostream>
-#include <iterator>
-#include <list>
-#include <numeric>
-#include <sstream>
-#include <string>
-#include <vector>  // Useful array list
 
 #include "range.hpp"
 #include "utils.hpp"
@@ -21,7 +11,7 @@ int main(int argc, char** argv) {
     if (argc < 2) {
         auto lines = readlines();
         R::reverse(lines);
-        std::cout << lines;
+        print(lines);
     }
 
     // verify if file exist
@@ -46,6 +36,6 @@ int main(int argc, char** argv) {
     for (auto& i : ifss) {
         auto lines = readlines(i);
         R::reverse(lines);
-        std::cout << lines;
+        print(lines);
     }
 }
