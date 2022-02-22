@@ -4,7 +4,9 @@
 # Check if a image's suffix (extension) is correct #
 ####################################################
 
-readonly VERSION="0.1.0"
+readonly VERSION="0.1.1"
+readonly AUTHOR="LSQ"
+readonly EMAIL="lsq6815@gmail.com"
 readonly HELP_INFO=$(cat <<END
 Check Image Suffix
 Usage: ${0##*/} [options] img1 [img2, [img3, ...]]
@@ -17,7 +19,8 @@ Options:
     -c, --correct : correct suffix if it is wrong, not work in test mode
     -w, --wrong   : only print the image with wrong suffix, override test mode, and normal mode
 
-Version: $VERSION
+Version: $VERSION 
+Copyright: $AUTHOR - $EMAIL
 END
 )
 
